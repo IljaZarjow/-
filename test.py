@@ -1,4 +1,4 @@
-from tkinter import *   
+from tkinter import *  
 from tkinter import ttk  
     
 window = Tk()
@@ -7,7 +7,8 @@ window.title("Илья")
 window.geometry('750x500')
 window.resizable(width=0, height=0)
 tab_control = ttk.Notebook(window)
-sec = 100
+sec = 59
+pec = 59
 n = 0
 
 def end():
@@ -126,7 +127,7 @@ def forbut_2():
 
 
 def start():
-    global sec, window
+    global sec, pec, window
     but['state']='normal'
     but2['state']='disable'
     but1['state']='normal'
@@ -144,24 +145,35 @@ def start():
 
     if sec > 0:
         sec -= 1
-        t1.config(text = 'До конца времени: ' + str(sec))
-        t3.config(text = 'До конца времени: ' + str(sec))
-        t4.config(text = 'До конца времени: ' + str(sec))
+        t1.config(text = '1: '+ str(sec))
+        t3.config(text = '1: '+ str(sec))
+        t4.config(text = '1: '+ str(sec))
+        window.after(1000 , start)
+
+    if sec == 0:
+        pec -= 1
+        t1.config(text = '0: '+ str(pec))
+        t3.config(text = '0: '+ str(pec))
+        t4.config(text = '0: '+ str(pec))
         window.after(1000, start)
-    else:
+
+    if pec < 0:
+        t1.config(text = '0: '+ '0 ')
+        t3.config(text = '0: '+ '0 ')
+        t4.config(text = '0: '+ '0 ')
         but1['state']='disable'
         but['state']='disable'
         but3['state']='disable'
         but4['state']='disable'
-        edit['state'] = 'disable'
-        edit1['state'] = 'disable'
-        edit2['state'] = 'disable'
-        edit3['state'] = 'disable'
+        edit['state'] ='disable'
+        edit1['state'] ='disable'
+        edit2['state'] ='disable'
+        edit3['state'] ='disable'
         edit4['state']='disable'
         edit5['state']='disable'
         edit6['state']='disable'
         edit7['state']='disable'
-        edit8['state']='disable'      
+        edit8['state']='disable' 
 
 tab1 = ttk.Frame(tab_control)  
 tab2 = ttk.Frame(tab_control)
